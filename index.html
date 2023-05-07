@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Literata&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="index.js"></script>
   <script
-    src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.21.0/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.1.0"></script>
+    src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+  <script src="index.js"></script>
 </head>
 
 <body>
@@ -29,6 +29,18 @@
     -->
   </header>
   <main>
+    <template id="audio-midi-player-template">
+      <div>
+        <midi-visualizer></midi-visualizer>
+        <midi-player sound-font="https://dblblnd.github.io/neurips23/soundfonts/silence">
+        </midi-player>
+        <audio>
+          <source type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio>
+      </div>
+    </template>
+
     <section id="inpainted-music">
       <h2>Harmonization</h2>
       <p>Our proposed approach is capable of rich forms of musical control. Specifically, our proposed approach can
@@ -37,10 +49,28 @@
       </p>
       <p>Here we show examples from our user study which focuses on harmonization. We compare our approach to ...</p>
 
+      <div class="audio-midi-player" midi-tag="harmony/0"></div>
+
+      <!--
+      <div class="">
+        <midi-visualizer id='hack-midi-visualizer'
+          src="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid">
+        </midi-visualizer>
+        <midi-player id='hack-midi-player' src="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid"
+          sound-font="https://dblblnd.github.io/neurips23/soundfonts/silence" visualizer="#hack-midi-visualizer">
+        </midi-player>
+        <audio controls id='hack-audio'>
+          <source src="/harmony/0-conditional.mp3" type="audio/mpeg">
+          Your browser does not support the audio tag.
+        </audio>
+      </div>
+
       <section id="inpainted-music-song1">
+
         <h3>Harmonization Example 1</h3>
         <div class='anchor-container'>
-          <a class='selected' midi-url="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid">Prompt</a>
+          <a class='selected'
+            midi-url="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid">Prompt</a>
           <a midi-url="https://dblblnd.github.io/neurips23/samples/harmony/system2/0-clip-v0.mid">Ours</a>
           <a midi-url="https://dblblnd.github.io/neurips23/samples/harmony/system0/0-clip-v0.mid">Left-to-right</a>
           <a midi-url="https://dblblnd.github.io/neurips23/samples/harmony/system3/0-clip-v0.mid">Retrieval</a>
@@ -55,6 +85,8 @@
           visualizer="#inpainted-music-song1-visualizer">
         </midi-player>
       </section>
+      -->
+
     </section>
   </main>
   <footer class="site-footer">
