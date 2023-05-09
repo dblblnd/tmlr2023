@@ -1,11 +1,12 @@
 (function ($) {
 
-  const SAMPLES_ROOT = 'https://p-lambda.github.io/musicgpt-user-study';
+  const SAMPLES_ROOT = 'https://dblblnd.github.io/neurips23/samples';
 
   async function onDomReady() {
     const audioMidiPlayerTemplate = document.querySelector('#audio-midi-player-template');
     document.querySelectorAll('div.audio-midi-player').forEach((player, i) => {
-      const tag = player.getAttribute('midi-tag');
+      const midiSample = player.getAttribute('midi-sample');
+      const mp3Sample = player.getAttribute('mp3-sample');
 
       // Grab elements
       const content = audioMidiPlayerTemplate.content.cloneNode(true);
@@ -18,12 +19,12 @@
       // Configure MIDI player
       midiVisualizer.setAttribute('id', `audio-midi-player-${i}`);
       midiPlayer.setAttribute('visualizer', `#audio-midi-player-${i}`);
-      const midiSrc = `${SAMPLES_ROOT}/${tag}-conditional.mid`;
+      const midiSrc = `${SAMPLES_ROOT}/${midiSample}`;
       midiVisualizer.setAttribute('src', midiSrc);
       midiPlayer.setAttribute('src', midiSrc);
 
       // Configure audio player
-      const audioSrc = `${SAMPLES_ROOT}/${tag}-conditional.mp3`;
+      const audioSrc = `${SAMPLES_ROOT}/${mp3Sample}`;
       audioSource.setAttribute('src', audioSrc);
 
       // Bind audio controls to MIDI player controls

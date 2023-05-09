@@ -90,11 +90,22 @@ midi-visualizer .piano-roll-visualizer {
 midi-visualizer svg rect.note {
   opacity: 0.6;
 }
-midi-visualizer svg rect.note[data-instrument="0"]{
-  fill: #e22;
+/* 0x426AA0, 0xB26789, 0xEA8D7F, 0xF1C09A */
+/* Harmonic prompt */
+midi-visualizer svg rect.note[data-program="0"][data-is-drum="false"]{
+  fill: #426AA0;
 }
-midi-visualizer svg rect.note[data-instrument="1"]{
-  fill: #904e95;
+/* Harmonic continuation */
+midi-visualizer svg rect.note[data-program="1"][data-is-drum="false"]{
+  fill: #B26789;
+}
+/* Percussive prompt */
+midi-visualizer svg rect.note[data-program="0"][data-is-drum="true"]{
+  fill: #EA8D7F;
+}
+/* Percussive continuation */
+midi-visualizer svg rect.note[data-program="1"][data-is-drum="true"]{
+  fill: #F1C09A;
 }
 
 midi-visualizer svg rect.note.active {
