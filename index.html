@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Arimo&family=Varela+Round&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Literata&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script
     src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
   <script src="index.js"></script>
@@ -49,47 +48,17 @@
       </p>
       <p>Here we show examples from our user study which focuses on harmonization. We compare our approach to ...</p>
 
-      <div class="audio-midi-player" midi-sample="harmony/0-conditional.vis.mid" mp3-sample="harmony/0-conditional.mp3" >
-      </div>
-
-      <div class="audio-midi-player" midi-sample="harmony/system2/0-clip-v0.vis.mid" mp3-sample="harmony/system2/0-clip-v0.mp3" >
-      </div>
-
-      <!--
-      <div class="">
-        <midi-visualizer id='hack-midi-visualizer'
-          src="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid">
-        </midi-visualizer>
-        <midi-player id='hack-midi-player' src="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid"
-          sound-font="https://dblblnd.github.io/neurips23/soundfonts/silence" visualizer="#hack-midi-visualizer">
-        </midi-player>
-        <audio controls id='hack-audio'>
-          <source src="/harmony/0-conditional.mp3" type="audio/mpeg">
-          Your browser does not support the audio tag.
-        </audio>
-      </div>
-
-      <section id="inpainted-music-song1">
-
-        <h3>Harmonization Example 1</h3>
+      <div class="example-tabbed">
         <div class='anchor-container'>
-          <a class='selected'
-            midi-url="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid">Prompt</a>
-          <a midi-url="https://dblblnd.github.io/neurips23/samples/harmony/system2/0-clip-v0.mid">Ours</a>
-          <a midi-url="https://dblblnd.github.io/neurips23/samples/harmony/system0/0-clip-v0.mid">Left-to-right</a>
-          <a midi-url="https://dblblnd.github.io/neurips23/samples/harmony/system3/0-clip-v0.mid">Retrieval</a>
-          <a midi-url="https://dblblnd.github.io/neurips23/samples/harmony/system1/0-clip.mid">Ground truth</a>
+          <a class='selected' example="harmony/0-conditional">Prompt</a>
+          <a example="harmony/system2/0-clip-v0">Ours</a>
+          <a example="harmony/system0/0-clip-v0">Left-to-right</a>
+          <a example="harmony/system3/0-clip-v0">Retrieval</a>
+          <a example="harmony/system1/0-clip">Ground truth</a>
         </div>
-        <midi-visualizer id='inpainted-music-song1-visualizer'
-          src="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid">
-        </midi-visualizer>
-        <midi-player id='inpainted-music-song1-player'
-          src="https://dblblnd.github.io/neurips23/samples/harmony/0-conditional.mid"
-          sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-          visualizer="#inpainted-music-song1-visualizer">
-        </midi-player>
-      </section>
-      -->
+        <div class="audio-midi-player" example="harmony/0-conditional">
+        </div>
+      </div>
 
     </section>
   </main>
