@@ -40,13 +40,15 @@
       </div>
     </template>
 
-    <section id="inpainted-music">
+    <section id="harmonization">
       <h2>Harmonization</h2>
+      <!--
       <p>Our proposed approach is capable of rich forms of musical control. Specifically, our proposed approach can
         <i>infill</i>, generate musical material conditioned on both the past and future, and <i>harmonize</i>, generate
         musical material to accompany existing material.</i>
       </p>
       <p>Here we show examples from our user study which focuses on harmonization. We compare our approach to ...</p>
+      -->
 
       <div class="example-tabbed">
         <div class='anchor-container'>
@@ -60,6 +62,93 @@
         </div>
       </div>
 
+      <div class="example-tabbed">
+        <div class='anchor-container'>
+          <a class='selected' example="harmony/1-conditional">Prompt</a>
+          <a example="harmony/system2/1-clip-v0">Ours</a>
+          <a example="harmony/system0/1-clip-v0">Left-to-right</a>
+          <a example="harmony/system3/1-clip-v0">Retrieval</a>
+          <a example="harmony/system1/1-clip">Ground truth</a>
+        </div>
+        <div class="audio-midi-player" example="harmony/1-conditional">
+        </div>
+      </div>
+
+      <div class="example-tabbed">
+        <div class='anchor-container'>
+          <a class='selected' example="harmony/2-conditional">Prompt</a>
+          <a example="harmony/system2/2-clip-v0">Ours</a>
+          <a example="harmony/system0/2-clip-v0">Left-to-right</a>
+          <a example="harmony/system3/2-clip-v0">Retrieval</a>
+          <a example="harmony/system1/2-clip">Ground truth</a>
+        </div>
+        <div class="audio-midi-player" example="harmony/2-conditional">
+        </div>
+      </div>
+
+      <div class="example-tabbed">
+        <div class='anchor-container'>
+          <a class='selected' example="harmony/3-conditional">Prompt</a>
+          <a example="harmony/system2/3-clip-v0">Ours</a>
+          <a example="harmony/system0/3-clip-v0">Left-to-right</a>
+          <a example="harmony/system3/3-clip-v0">Retrieval</a>
+          <a example="harmony/system1/3-clip">Ground truth</a>
+        </div>
+        <div class="audio-midi-player" example="harmony/3-conditional">
+        </div>
+      </div>
+    </section>
+
+    <section id="prompted">
+      <h2>Prompted completion</h2>
+
+      <div class="example-tabbed">
+        <div class='anchor-container'>
+          <a class='selected' example="prompt/system0/0-clip">System 0</a>
+          <a example="prompt/system1/0-clip">System 1</a>
+          <a example="prompt/system2/0-clip-v0">System 2</a>
+          <a example="prompt/system3/0-clip-v0">System 3</a>
+          <a example="prompt/system4/0-clip-v0">System 4</a>
+        </div>
+        <div class="audio-midi-player" example="prompt/system0/0-clip">
+        </div>
+      </div>
+
+      <div class="example-tabbed">
+        <div class='anchor-container'>
+          <a class='selected' example="prompt/system0/1-clip">System 0</a>
+          <a example="prompt/system1/1-clip">System 1</a>
+          <a example="prompt/system2/1-clip-v0">System 2</a>
+          <a example="prompt/system3/1-clip-v0">System 3</a>
+          <a example="prompt/system4/1-clip-v0">System 4</a>
+        </div>
+        <div class="audio-midi-player" example="prompt/system0/1-clip">
+        </div>
+      </div>
+
+      <div class="example-tabbed">
+        <div class='anchor-container'>
+          <a class='selected' example="prompt/system0/2-clip">System 0</a>
+          <a example="prompt/system1/2-clip">System 1</a>
+          <a example="prompt/system2/2-clip-v0">System 2</a>
+          <a example="prompt/system3/2-clip-v0">System 3</a>
+          <a example="prompt/system4/2-clip-v0">System 4</a>
+        </div>
+        <div class="audio-midi-player" example="prompt/system0/2-clip">
+        </div>
+      </div>
+
+      <div class="example-tabbed">
+        <div class='anchor-container'>
+          <a class='selected' example="prompt/system0/3-clip">System 0</a>
+          <a example="prompt/system1/3-clip">System 1</a>
+          <a example="prompt/system2/3-clip-v0">System 2</a>
+          <a example="prompt/system3/3-clip-v0">System 3</a>
+          <a example="prompt/system4/3-clip-v0">System 4</a>
+        </div>
+        <div class="audio-midi-player" example="prompt/system0/3-clip">
+        </div>
+      </div>
     </section>
   </main>
   <footer class="site-footer">
