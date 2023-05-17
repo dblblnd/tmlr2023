@@ -18,8 +18,9 @@
 
 <body>
   <header class="page-header">
-    <h1 class="">Anticipatory Music Transformer</h1>
-    <!--<h2 class=""></h2>-->
+    <h1 class="">Examples from <i>Anticipatory Music Transformer</i></h1>
+    <h2 class=""><b>Please do not share!</b> Under double blind review at NeurIPS 2023.
+    </h2>
     <!--
     <a class="page-header__link" target='_blank' href="">
       Github</a>
@@ -40,8 +41,62 @@
       </div>
     </template>
 
-    <section id="harmonization">
-      <h2>Harmonization</h2>
+    <section id="intro">
+      <p>
+        This page contains sound examples from the two human evaluations in our paper <i>Anticipatory Music
+          Transformer</i>. We evaluated our proposed method under two prompted generation settings: <a
+          href="#accompaniment">accompaniment</a>, and the more commonly studied
+        <a href="#prompted">prompted completion</a>. For all music visualizations, we adopt the following color
+        scheme:
+      </p>
+      <ul>
+        <li>
+          <div id="melodic-prompt" class="legend"></div>Melodic prompt
+        </li>
+        <li>
+          <div id="melodic-cont" class="legend"></div>Melodic continuation
+        </li>
+        <li>
+          <div id="percussive-prompt" class="legend"></div>Percussive prompt
+        </li>
+        <li>
+          <div id="percussive-cont" class="legend"></div>Percussive continuation
+        </li>
+      </ul>
+    </section>
+
+    <section id="accompaniment">
+      <h2>Accompaniment (<b>Table 3</b>)</h2>
+      <p>
+        We present sound examples from our human evaluation of different methods on an accompaniment task.
+        For this task,
+        methods are given a prompt consisting of 5 seconds of a full ensemble
+        and an additional 15 seconds of a single melodic instrument from that ensemble.
+        The goal is to infill 15 seconds of musical content in a manner that is musically compatible with
+        both the
+        (past) ensemble and
+        (contemperaneous) solo instrument
+        prompt.
+        Results here correspond to <b>Table 3</b> from our paper.
+      </p>
+
+      <p>
+        The goal of this study is to evaluate the infilling capabilities of our proposed method against
+        baselines. To this end, we compare four methods:
+      </p>
+      <ul>
+        <li><span class="methodtag">Anticipatory (proposed)</span>: Our proposed method with anticipation and arrival
+          time encoding</li>
+        <li><span class="methodtag">Autoregressive</span>: Standard left-to-right prompting</li>
+        <li><span class="methodtag">Retrieval</span>: Randomly retrieving later musical material from the same piece
+        </li>
+        <li><span class="methodtag">Ground truth</span>: The original human-composed music</li>
+      </ul>
+
+      <p>Note that the anticipatory and autoregressive <i>methods</i> here use the same underlying <i>model</i> but
+        with two different
+        conditioning and sampling strategies (see the paper for additional details).</p>
+
       <!--
       <p>Our proposed approach is capable of rich forms of musical control. Specifically, our proposed approach can
         <i>infill</i>, generate musical material conditioned on both the past and future, and <i>harmonize</i>, generate
@@ -53,8 +108,8 @@
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="harmony/0-conditional">Prompt</a>
-          <a example="harmony/system2/0-clip-v0">Ours</a>
-          <a example="harmony/system0/0-clip-v0">Left-to-right</a>
+          <a example="harmony/system2/0-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row 8</a>
+          <a example="harmony/system0/0-clip-v0">Autoregressive <span class="modeltag">Table 1 - Row 8</span></a>
           <a example="harmony/system3/0-clip-v0">Retrieval</a>
           <a example="harmony/system1/0-clip">Ground truth</a>
         </div>
@@ -65,20 +120,20 @@
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="harmony/1-conditional">Prompt</a>
-          <a example="harmony/system2/1-clip-v0">Ours</a>
-          <a example="harmony/system0/1-clip-v0">Left-to-right</a>
+          <a example="harmony/system2/1-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row 8</a>
+          <a example="harmony/system0/1-clip-v0">Autoregressive <span class="modeltag">Table 1 - Row 8</span></a>
           <a example="harmony/system3/1-clip-v0">Retrieval</a>
           <a example="harmony/system1/1-clip">Ground truth</a>
         </div>
-        <div class="audio-midi-player" example="harmony/1-conditional">
+        <div class="audio-midi-player" example="harmony/1-conditional" min-pitch="30" max-pitch="85">
         </div>
       </div>
 
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="harmony/2-conditional">Prompt</a>
-          <a example="harmony/system2/2-clip-v0">Ours</a>
-          <a example="harmony/system0/2-clip-v0">Left-to-right</a>
+          <a example="harmony/system2/2-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row 8</a>
+          <a example="harmony/system0/2-clip-v0">Autoregressive <span class="modeltag">Table 1 - Row 8</span></a>
           <a example="harmony/system3/2-clip-v0">Retrieval</a>
           <a example="harmony/system1/2-clip">Ground truth</a>
         </div>
@@ -89,39 +144,68 @@
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="harmony/3-conditional">Prompt</a>
-          <a example="harmony/system2/3-clip-v0">Ours</a>
-          <a example="harmony/system0/3-clip-v0">Left-to-right</a>
+          <a example="harmony/system2/3-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row
+              8</span></a>
+          <a example="harmony/system0/3-clip-v0">Autoregressive <span class="modeltag">Table 1 - Row 8</span></a>
           <a example="harmony/system3/3-clip-v0">Retrieval</a>
           <a example="harmony/system1/3-clip">Ground truth</a>
         </div>
-        <div class="audio-midi-player" example="harmony/3-conditional">
+        <div class="audio-midi-player" example="harmony/3-conditional" min-pitch="25" max-pitch="90">
         </div>
       </div>
     </section>
 
     <section id="prompted">
-      <h2>Prompted completion</h2>
+      <h2>Prompted completion (<b>Table 2</b>)</h2>
+
+      <p>
+        We additionally present sound examples from our human evaluation of different methods on a prompted completio
+        task.
+        For this task,
+        methods are given a prompt consisting of 5 seconds of a full ensemble,
+        and the goal is to generate 15 seconds of musical content in a manner that is musically compatible with that
+        prompt.
+        Results here correspond to <b>Table 2</b> from our paper.
+      </p>
+
+      <p>
+        The goal of this study is to compare the performance of different <i>models</i>, i.e., individual training runs,
+        on a more typical symbolic music generation task. To this end, we compare:
+      </p>
+      <ul>
+        <li><span class="methodtag">Anticipatory (medium)</span>: Our proposed method with anticipation and arrival
+          time encoding</li>
+        <li><span class="methodtag">FIGARO</span>: A symbolic music generation model proposed by <a target="_blank" href="https://arxiv.org/abs/2201.10936">von R&uuml;tte et al. 2022</a></li>
+        <li><span class="methodtag">Anticipatory (small)</span>: A small version of our model</li>
+        <li><span class="methodtag">Autoregressive (small, interarrival)</span>: A small model trained w/ conventional methods</li>
+        <li><span class="methodtag">Ground truth</span>: The original human-composed music</li>
+      </ul>
+
+      <p>
+        Note that here "anticipatory" refers to the <i>training</i> protocol&mdash;all models are generating in an autoregressive fashion.
+      </p>
 
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="prompt/0-prompt">Prompt</a>
-          <a example="prompt/system2/0-clip-v0">Ours</a>
-          <a example="prompt/system4/0-clip-v0">Ours (sm)</a>
-          <a example="prompt/system3/0-clip-v0">Ours (sm-interarrival)</a>
+          <a example="prompt/system2/0-clip-v0">Anticipatory (medium) <span class="modeltag">Table 1 - Row 8</span></a>
           <a example="prompt/system0/0-clip">FIGARO</a>
+          <a example="prompt/system4/0-clip-v0">Anticipatory (small) <span class="modeltag">Table 1 - Row 3</span></a>
+          <a example="prompt/system3/0-clip-v0">Autoregressive (small, interarrival) <span class="modeltag">Table 1 -
+              Row 1</span></a>
           <a example="prompt/system1/0-clip">Ground truth</a>
         </div>
-        <div class="audio-midi-player" example="prompt/0-prompt">
+        <div class="audio-midi-player" example="prompt/0-prompt" min-pitch="25" max-pitch="110">
         </div>
       </div>
 
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="prompt/1-prompt">Prompt</a>
-          <a example="prompt/system2/1-clip-v0">Ours</a>
-          <a example="prompt/system4/1-clip-v0">Ours (sm)</a>
-          <a example="prompt/system3/1-clip-v0">Ours (sm-interarrival)</a>
+          <a example="prompt/system2/1-clip-v0">Medium (Row 8)</a>
           <a example="prompt/system0/1-clip">FIGARO</a>
+          <a example="prompt/system4/1-clip-v0">Small (Row 3)</a>
+          <a example="prompt/system3/1-clip-v0">Small (Row 1)</a>
           <a example="prompt/system1/1-clip">Ground truth</a>
         </div>
         <div class="audio-midi-player" example="prompt/1-prompt">
@@ -131,10 +215,10 @@
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="prompt/2-prompt">Prompt</a>
-          <a example="prompt/system2/2-clip-v0">Ours</a>
-          <a example="prompt/system4/2-clip-v0">Ours (sm)</a>
-          <a example="prompt/system3/2-clip-v0">Ours (sm-interarrival)</a>
+          <a example="prompt/system2/2-clip-v0">Medium (Row 8)</a>
           <a example="prompt/system0/2-clip">FIGARO</a>
+          <a example="prompt/system4/2-clip-v0">Small (Row 3)</a>
+          <a example="prompt/system3/2-clip-v0">Small (Row 1)</a>
           <a example="prompt/system1/2-clip">Ground truth</a>
         </div>
         <div class="audio-midi-player" example="prompt/2-prompt">
@@ -144,13 +228,13 @@
       <div class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="prompt/3-prompt">Prompt</a>
-          <a example="prompt/system2/3-clip-v0">Ours</a>
-          <a example="prompt/system4/3-clip-v0">Ours (sm)</a>
-          <a example="prompt/system3/3-clip-v0">Ours (sm-interarrival)</a>
+          <a example="prompt/system2/3-clip-v0">Medium (Row 8)</a>
           <a example="prompt/system0/3-clip">FIGARO</a>
+          <a example="prompt/system4/3-clip-v0">Small (Row 3)</a>
+          <a example="prompt/system3/3-clip-v0">Small (Row 1)</a>
           <a example="prompt/system1/3-clip">Ground truth</a>
         </div>
-        <div class="audio-midi-player" example="prompt/3-prompt">
+        <div class="audio-midi-player" example="prompt/3-prompt" min-pitch="26" max-pitch="93">
         </div>
       </div>
 
@@ -161,7 +245,9 @@
       This page is a fork of <a target="_blank" href="https://github.com/jackyhsiung/piano-infilling-demo">this
         template</a> (<a target="_blank" href="LICENSE">license</a>) kindly provided by <a target='_blank'
         href="https://jackyhsiung.github.io/piano-infilling-demo/">Chang et al. 21</a> and developed by <a
-        target='_blank' href="https://github.com/jackyhsiung/">Chia-Ho Hsiung</a>.
+        target='_blank' href="https://github.com/jackyhsiung/">Chia-Ho Hsiung</a>. Uses the <a target="_blank"
+        href="https://github.com/cifkao/html-midi-player"><code>html-midi-player</code></a> library by
+      <a target="_blank" href="https://ondrej.cifka.com/">Ond&rcaron;ej C&iacute;fka</a>.
     </span>
   </footer>
 </body>

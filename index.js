@@ -1,12 +1,16 @@
 (function () {
 
   const SAMPLES_ROOT = 'https://dblblnd.github.io/neurips23/samples';
+  // Controls horizontal width (default 30)
+  const PIXELS_PER_TIME_STEP = 50;
 
   async function onDomReady() {
     // Initialize synchronized MIDI / audio playback visualizer
     const audioMidiPlayerTemplate = document.querySelector('#audio-midi-player-template');
     document.querySelectorAll('div.audio-midi-player').forEach((player, i) => {
       const exampleTag = player.getAttribute('example');
+      const minPitch = player.getAttribute('min-pitch');
+      const maxPitch = player.getAttribute('max-pitch');
 
       // Grab elements
       const content = audioMidiPlayerTemplate.content.cloneNode(true);
@@ -28,6 +32,19 @@
 
       // Bind audio controls to MIDI player controls
       midiPlayer.addEventListener('load', function () {
+        // Visualizer config
+        config = {
+          pixelsPerTimeStep: PIXELS_PER_TIME_STEP
+        }
+        if (minPitch !== null) {
+          config['minPitch'] = Number(minPitch);
+        }
+        if (maxPitch !== null) {
+          config['maxPitch'] = Number(maxPitch);
+        }
+        midiVisualizer.config = config
+
+        // Player custom playback functionality
         const midiPlayerSeekBar = midiPlayer.shadowRoot.querySelector('.seek-bar');
         midiPlayerSeekBar.addEventListener('input', function () {
           audioPlayer.pause();

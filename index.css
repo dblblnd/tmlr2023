@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: 'Arimo', sans-serif;
@@ -10,11 +11,14 @@ html, body {
   padding: 3rem;
   text-align: center;
   color: #fff;
-  background: linear-gradient(to right, #e96443, #904e95); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #426AA0, #B26789);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
 .page-header h2 {
   font-weight: normal;
 }
+
 .page-header__link {
   text-decoration: none;
   font-size: 1rem;
@@ -32,8 +36,8 @@ html, body {
 
 .page-header__link:hover {
   color: #ffffff;
-  background-color: #904e95;
-  border-color: #904e95;
+  background-color: #EA8D7F;
+  border-color: #EA8D7F;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -43,24 +47,49 @@ html, body {
 main {
   padding: 2rem 1rem;
 }
-#inpainted-music h2, #controll-number-of-bars h2,
-#inpainted-music h3, #controll-number-of-bars h3  {
-  color: #e96443;
+
+main h2,
+main h3 {
+  color: #444444;
   opacity: 0.9;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-weight: normal;
+  font-weight: bold;
 }
-#inpainted-music p, #controll-number-of-bars p {
+
+main p,
+main ul {
   font-family: 'Literata', serif;
   color: #606c71;
 }
 
-#inpainted-music h2, #controll-number-of-bars h2,
-#inpainted-music h3, #controll-number-of-bars h3,
-#inpainted-music p, #controll-number-of-bars p  {
+li {
+  margin-right: 10px;
+}
+
+main h2,
+main h3,
+main p {
   margin-left: 4px;
   margin-right: 4px;
+}
+
+#intro p {
+  text-align: left;
+  ;
+}
+
+#intro ul {
+  list-style-type: none;
+  /* Remove bullet points */
+  display: flex;
+  /* Make it a flex container */
+  justify-content: center;
+  /* Center the list horizontally */
+}
+
+#intro li {
+  margin-right: 16px;
 }
 
 /* Custom player style */
@@ -87,30 +116,35 @@ midi-visualizer .piano-roll-visualizer {
   margin-bottom: 0;
   overflow: auto;
 }
+
 midi-visualizer svg rect.note {
   opacity: 0.6;
 }
+
 /* 0x426AA0, 0xB26789, 0xEA8D7F, 0xF1C09A */
 /* Harmonic prompt */
-midi-visualizer svg rect.note[data-program="0"][data-is-drum="false"]{
+midi-visualizer svg rect.note[data-program="0"][data-is-drum="false"] {
   fill: #426AA0;
 }
+
 /* Harmonic continuation */
-midi-visualizer svg rect.note[data-program="1"][data-is-drum="false"]{
+midi-visualizer svg rect.note[data-program="1"][data-is-drum="false"] {
   fill: #B26789;
 }
+
 /* Percussive prompt */
-midi-visualizer svg rect.note[data-program="0"][data-is-drum="true"]{
+midi-visualizer svg rect.note[data-program="0"][data-is-drum="true"] {
   fill: #EA8D7F;
 }
+
 /* Percussive continuation */
-midi-visualizer svg rect.note[data-program="1"][data-is-drum="true"]{
+midi-visualizer svg rect.note[data-program="1"][data-is-drum="true"] {
   fill: #F1C09A;
 }
 
 midi-visualizer svg rect.note.active {
   opacity: 1.0;
-  stroke: slategrey;
+  stroke: #444444;
 }
 
 .anchor-container {
@@ -119,8 +153,8 @@ midi-visualizer svg rect.note.active {
   display: flex;
 }
 
-.example-tabbed a, #controll-number-of-bars a {
-  color:#e96443;
+.example-tabbed a {
+  color: #606c71;
   display: block;
   padding: 1rem 1.5rem;
   margin-bottom: -1px;
@@ -133,16 +167,17 @@ midi-visualizer svg rect.note.active {
   border-bottom-color: #fefefe;
 }
 
-.example-tabbed a.selected, #controll-number-of-bars a.selected {
+.example-tabbed a.selected {
   /* border-color: #e0e0e0;
   border-bottom-color: #fefefe; */
   /* padding: 1rem 2rem; */
-  background: #e96443;
+  background: #426AA0;
   color: #fefefe;
 }
-.example-tabbed a:hover, #controll-number-of-bars a:hover,
-.example-tabbed a.selected:hover, #controll-number-of-bars a.selected:hover  {
-  background: #e96443;
+
+.example-tabbed a:hover,
+.example-tabbed a.selected:hover {
+  background: #426AA0;
   color: #ffffff;
   cursor: pointer;
 }
@@ -157,12 +192,49 @@ midi-visualizer svg rect.note.active {
 .site-footer-credit {
   padding-left: 4px;
   font-family: 'Literata', serif;
-  color: #606c71;
+  color: #444444;
 }
 
 .site-footer-credit a {
   text-decoration: none;
-  color:#e96443;
+  color: #B26789;
   opacity: 0.9;
 }
 
+.modeltag {
+  /*
+  display: table;
+  margin: 0 auto;
+  */
+  display: block;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.methodtag {
+  font-weight: bold;
+}
+
+#melodic-prompt {
+  background-color: #426AA0;
+}
+
+#melodic-cont {
+  background-color: #B26789;
+}
+
+#percussive-prompt {
+  background-color: #EA8D7F;
+}
+
+#percussive-cont {
+  background-color: #F1C09A;
+}
+
+.legend {
+  display: inline-block;
+  margin-right: 4px;
+  width: 2em;
+  height: 1em;
+  border: 1px solid #000000;
+}
