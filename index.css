@@ -41,6 +41,11 @@ body {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
+.nav {
+  margin: 0 auto;
+  width: 150px;
+}
+
 /* #inpainted-music, #controll-number-of-bars {
   padding: 0 2rem;
 } */
