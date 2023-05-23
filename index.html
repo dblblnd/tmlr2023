@@ -38,6 +38,11 @@
           <source type="audio/mpeg">
           Your browser does not support the audio tag.
         </audio>
+        <div class="nav">
+          <button class="nav-previous">&lt;--</button>
+          <span class="nav-current">1</span> of <span class="nav-max">N</span>
+          <button class="nav-next">--&gt;</button>
+        </div>
       </div>
     </template>
 
@@ -97,15 +102,7 @@
         with two different
         conditioning and sampling strategies (see the paper for additional details).</p>
 
-      <!--
-      <p>Our proposed approach is capable of rich forms of musical control. Specifically, our proposed approach can
-        <i>infill</i>, generate musical material conditioned on both the past and future, and <i>harmonize</i>, generate
-        musical material to accompany existing material.</i>
-      </p>
-      <p>Here we show examples from our user study which focuses on harmonization. We compare our approach to ...</p>
-      -->
-
-      <div class="example-tabbed">
+      <div id="accompaniment-example" class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="harmony/0-conditional">Prompt</a>
           <a example="harmony/system2/0-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row 8</a>
@@ -113,44 +110,7 @@
           <a example="harmony/system3/0-clip-v0">Retrieval</a>
           <a example="harmony/system1/0-clip">Ground truth</a>
         </div>
-        <div class="audio-midi-player" example="harmony/0-conditional">
-        </div>
-      </div>
-
-      <div class="example-tabbed">
-        <div class='anchor-container'>
-          <a class='selected' example="harmony/1-conditional">Prompt</a>
-          <a example="harmony/system2/1-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row 8</a>
-          <a example="harmony/system0/1-clip-v0">Autoregressive <span class="modeltag">Table 1 - Row 8</span></a>
-          <a example="harmony/system3/1-clip-v0">Retrieval</a>
-          <a example="harmony/system1/1-clip">Ground truth</a>
-        </div>
-        <div class="audio-midi-player" example="harmony/1-conditional" min-pitch="30" max-pitch="85">
-        </div>
-      </div>
-
-      <div class="example-tabbed">
-        <div class='anchor-container'>
-          <a class='selected' example="harmony/2-conditional">Prompt</a>
-          <a example="harmony/system2/2-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row 8</a>
-          <a example="harmony/system0/2-clip-v0">Autoregressive <span class="modeltag">Table 1 - Row 8</span></a>
-          <a example="harmony/system3/2-clip-v0">Retrieval</a>
-          <a example="harmony/system1/2-clip">Ground truth</a>
-        </div>
-        <div class="audio-midi-player" example="harmony/2-conditional">
-        </div>
-      </div>
-
-      <div class="example-tabbed">
-        <div class='anchor-container'>
-          <a class='selected' example="harmony/3-conditional">Prompt</a>
-          <a example="harmony/system2/3-clip-v0">Anticipatory (proposed) <span class="modeltag">Table 1 - Row
-              8</span></a>
-          <a example="harmony/system0/3-clip-v0">Autoregressive <span class="modeltag">Table 1 - Row 8</span></a>
-          <a example="harmony/system3/3-clip-v0">Retrieval</a>
-          <a example="harmony/system1/3-clip">Ground truth</a>
-        </div>
-        <div class="audio-midi-player" example="harmony/3-conditional" min-pitch="25" max-pitch="90">
+        <div class="audio-midi-player" example="harmony/0-conditional" min-pitch="1" max-pitch="127" max-idx="50">
         </div>
       </div>
     </section>
@@ -175,17 +135,20 @@
       <ul>
         <li><span class="methodtag">Anticipatory (medium)</span>: Our proposed method with anticipation and arrival
           time encoding</li>
-        <li><span class="methodtag">FIGARO</span>: A symbolic music generation model proposed by <a target="_blank" href="https://arxiv.org/abs/2201.10936">von R&uuml;tte et al. 2022</a></li>
+        <li><span class="methodtag">FIGARO</span>: A symbolic music generation model proposed by <a target="_blank"
+            href="https://arxiv.org/abs/2201.10936">von R&uuml;tte et al. 2022</a></li>
         <li><span class="methodtag">Anticipatory (small)</span>: A small version of our model</li>
-        <li><span class="methodtag">Autoregressive (small, interarrival)</span>: A small model trained w/ conventional methods</li>
+        <li><span class="methodtag">Autoregressive (small, interarrival)</span>: A small model trained w/ conventional
+          methods</li>
         <li><span class="methodtag">Ground truth</span>: The original human-composed music</li>
       </ul>
 
       <p>
-        Note that here "anticipatory" refers to the <i>training</i> protocol&mdash;all models are generating in an autoregressive fashion.
+        Note that here "anticipatory" refers to the <i>training</i> protocol&mdash;all models are generating in an
+        autoregressive fashion.
       </p>
 
-      <div class="example-tabbed">
+      <div id="prompted-example" class="example-tabbed">
         <div class='anchor-container'>
           <a class='selected' example="prompt/0-prompt">Prompt</a>
           <a example="prompt/system2/0-clip-v0">Anticipatory (medium) <span class="modeltag">Table 1 - Row 8</span></a>
@@ -195,46 +158,7 @@
               Row 1</span></a>
           <a example="prompt/system1/0-clip">Ground truth</a>
         </div>
-        <div class="audio-midi-player" example="prompt/0-prompt" min-pitch="25" max-pitch="110">
-        </div>
-      </div>
-
-      <div class="example-tabbed">
-        <div class='anchor-container'>
-          <a class='selected' example="prompt/1-prompt">Prompt</a>
-          <a example="prompt/system2/1-clip-v0">Medium (Row 8)</a>
-          <a example="prompt/system0/1-clip">FIGARO</a>
-          <a example="prompt/system4/1-clip-v0">Small (Row 3)</a>
-          <a example="prompt/system3/1-clip-v0">Small (Row 1)</a>
-          <a example="prompt/system1/1-clip">Ground truth</a>
-        </div>
-        <div class="audio-midi-player" example="prompt/1-prompt">
-        </div>
-      </div>
-
-      <div class="example-tabbed">
-        <div class='anchor-container'>
-          <a class='selected' example="prompt/2-prompt">Prompt</a>
-          <a example="prompt/system2/2-clip-v0">Medium (Row 8)</a>
-          <a example="prompt/system0/2-clip">FIGARO</a>
-          <a example="prompt/system4/2-clip-v0">Small (Row 3)</a>
-          <a example="prompt/system3/2-clip-v0">Small (Row 1)</a>
-          <a example="prompt/system1/2-clip">Ground truth</a>
-        </div>
-        <div class="audio-midi-player" example="prompt/2-prompt">
-        </div>
-      </div>
-
-      <div class="example-tabbed">
-        <div class='anchor-container'>
-          <a class='selected' example="prompt/3-prompt">Prompt</a>
-          <a example="prompt/system2/3-clip-v0">Medium (Row 8)</a>
-          <a example="prompt/system0/3-clip">FIGARO</a>
-          <a example="prompt/system4/3-clip-v0">Small (Row 3)</a>
-          <a example="prompt/system3/3-clip-v0">Small (Row 1)</a>
-          <a example="prompt/system1/3-clip">Ground truth</a>
-        </div>
-        <div class="audio-midi-player" example="prompt/3-prompt" min-pitch="26" max-pitch="93">
+        <div class="audio-midi-player" example="prompt/0-prompt" min-pitch="1" max-pitch="127" max-idx="50">
         </div>
       </div>
 

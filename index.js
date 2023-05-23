@@ -3,21 +3,71 @@
   const SAMPLES_ROOT = 'https://dblblnd.github.io/neurips23/samples';
   // Controls horizontal width (default 30)
   const PIXELS_PER_TIME_STEP = 38;
+  // Controls vertical width
+  const NOTE_HEIGHT = 3;
+
+  function updateUrl(anchor, navCurrentIdx) {
+    const currentURL = new URL(window.location.href);
+    const currentSearchParams = currentURL.searchParams;
+    currentSearchParams.set('idx', String(navCurrentIdx));
+    currentURL.hash = anchor;
+    const newURL = `${currentURL.pathname}${currentURL.search}${currentURL.hash}`;
+    history.pushState({}, '', newURL);
+  }
+
+  function changeDisplayedMidiTag(divEl, exampleTag) {
+    const midiVisualizer = divEl.querySelector('midi-visualizer');
+    const midiPlayer = divEl.querySelector('midi-player');
+    const audioPlayer = divEl.querySelector('audio');
+    const audioSource = divEl.querySelector('source');
+    const midiSrc = `${SAMPLES_ROOT}/${exampleTag}.vis.mid`;
+    const audioSrc = `${SAMPLES_ROOT}/${exampleTag}.mp3`;
+    midiVisualizer.setAttribute('src', midiSrc);
+    midiPlayer.setAttribute('src', midiSrc);
+    audioPlayer.pause();
+    audioSource.setAttribute('src', audioSrc);
+    audioPlayer.load();
+  }
+
+  function refreshDisplayedMidi(divEl) {
+    const linkEls = divEl.querySelectorAll('a');
+    let selectedLinkEl = linkEls[0];
+    for (let i = 0; i < linkEls.length; ++i) {
+      if (linkEls[i].className == 'selected') {
+        selectedLinkEl = linkEls[i];
+        break;
+      }
+    }
+    const exampleTagTemplate = selectedLinkEl.getAttribute('example');
+    const navCurrentIdx = Number(divEl.querySelector('.nav-current').innerHTML) - 1;
+    const exampleTag = exampleTagTemplate.replace('0-', `${navCurrentIdx}-`);
+    changeDisplayedMidiTag(divEl, exampleTag);
+    updateUrl(divEl.getAttribute('id'), navCurrentIdx + 1);
+  }
 
   async function onDomReady() {
     // Initialize synchronized MIDI / audio playback visualizer
     const audioMidiPlayerTemplate = document.querySelector('#audio-midi-player-template');
-    document.querySelectorAll('div.audio-midi-player').forEach((player, i) => {
-      const exampleTag = player.getAttribute('example');
-      const minPitch = player.getAttribute('min-pitch');
-      const maxPitch = player.getAttribute('max-pitch');
 
-      // Grab elements
-      const content = audioMidiPlayerTemplate.content.cloneNode(true);
-      const midiVisualizer = content.querySelector('midi-visualizer');
-      const midiPlayer = content.querySelector('midi-player');
-      const audioPlayer = content.querySelector('audio');
-      const audioSource = content.querySelector('source');
+    document.querySelectorAll('div.example-tabbed').forEach((divEl, i) => {
+      // Get template attributes
+      const linkEls = divEl.querySelectorAll('a');
+      const playerDivEl = divEl.querySelector('div.audio-midi-player');
+      const exampleTag = playerDivEl.getAttribute('example');
+      const minPitch = playerDivEl.getAttribute('min-pitch');
+      const maxPitch = playerDivEl.getAttribute('max-pitch');
+      const maxIdx = playerDivEl.getAttribute('max-idx');
+
+      // Grab template elements
+      const playerEl = audioMidiPlayerTemplate.content.cloneNode(true);
+      const midiVisualizer = playerEl.querySelector('midi-visualizer');
+      const midiPlayer = playerEl.querySelector('midi-player');
+      const audioPlayer = playerEl.querySelector('audio');
+      const audioSource = playerEl.querySelector('source');
+      const navPrevious = playerEl.querySelector('.nav-previous')
+      const navCurrent = playerEl.querySelector('.nav-current')
+      const navMax = playerEl.querySelector('.nav-max')
+      const navNext = playerEl.querySelector('.nav-next')
 
       // Configure MIDI player
       midiVisualizer.setAttribute('id', `audio-midi-player-${i}`);
@@ -34,6 +84,7 @@
       midiPlayer.addEventListener('load', function () {
         // Visualizer config
         config = {
+          noteHeight: NOTE_HEIGHT,
           pixelsPerTimeStep: PIXELS_PER_TIME_STEP
         }
         if (minPitch !== null) {
@@ -63,30 +114,43 @@
         audioPlayer.pause();
       });
 
-      player.appendChild(content);
+      // Configure nav
+      let navCurrentIdx = 0;
+      navMax.innerHTML = maxIdx;
+      navPrevious.onclick = function () {
+        navCurrentIdx -= 1;
+        if (navCurrentIdx < 0) navCurrentIdx += Number(maxIdx);
+        navCurrent.innerHTML = navCurrentIdx + 1;
+        refreshDisplayedMidi(divEl);
+      }
+      navNext.onclick = function () {
+        navCurrentIdx += 1;
+        if (navCurrentIdx >= maxIdx) navCurrentIdx -= Number(maxIdx);
+        navCurrent.innerHTML = navCurrentIdx + 1;
+        refreshDisplayedMidi(divEl);
+      }
+
+      // Configure links
+      linkEls.forEach((a) => {
+        a.onclick = function () {
+          linkEls.forEach((_a) => { _a.className = ''; });
+          a.className = 'selected';
+          refreshDisplayedMidi(divEl);
+        }
+      });
+
+      playerDivEl.appendChild(playerEl);
     });
 
-    // Initialize tab switchers
-    document.querySelectorAll('div.example-tabbed').forEach((div, i) => {
-      const midiVisualizer = div.querySelector('midi-visualizer');
-      const midiPlayer = div.querySelector('midi-player');
-      const audioPlayer = div.querySelector('audio');
-      const audioSource = div.querySelector('source');
-      div.querySelectorAll('a').forEach((a, j) => {
-        const exampleTag = a.getAttribute('example');
-        a.onclick = function () {
-          div.querySelectorAll('a').forEach((_a) => { _a.className = ''; });
-          a.className = 'selected';
-          const midiSrc = `${SAMPLES_ROOT}/${exampleTag}.vis.mid`;
-          const audioSrc = `${SAMPLES_ROOT}/${exampleTag}.mp3`;
-          midiVisualizer.setAttribute('src', midiSrc);
-          midiPlayer.setAttribute('src', midiSrc);
-          audioPlayer.pause();
-          audioSource.setAttribute('src', audioSrc);
-          audioPlayer.load();
-        };
-      });
-    });
+    // Load specific example if present in URL
+    const currentURL = new URL(window.location.href);
+    const currentSearchParams = currentURL.searchParams;
+    const idx = currentSearchParams.get('idx');
+    const anchorEl = document.querySelector(currentURL.hash);
+    if (idx !== null && anchorEl !== null) {
+      anchorEl.querySelector('.nav-current').innerHTML = idx;
+      refreshDisplayedMidi(anchorEl);
+    }
   }
 
   document.addEventListener("DOMContentLoaded", onDomReady, false);
