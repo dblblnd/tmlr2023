@@ -36,8 +36,8 @@ body {
 
 .page-header__link:hover {
   color: #ffffff;
-  background-color: #EA8D7F;
-  border-color: #EA8D7F;
+  background-color: #009e73;
+  border-color: #009e73;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -123,7 +123,7 @@ midi-visualizer svg rect.note {
   opacity: 0.6;
 }
 
-/* 0x426AA0, 0xB26789, 0xEA8D7F, 0xF1C09A */
+/* 0x426AA0, 0xB26789, 0x009e73, 0xd55e00 */
 /* Harmonic prompt */
 midi-visualizer svg rect.note[data-program="0"][data-is-drum="false"] {
   fill: #426AA0;
@@ -136,12 +136,12 @@ midi-visualizer svg rect.note[data-program="1"][data-is-drum="false"] {
 
 /* Percussive prompt */
 midi-visualizer svg rect.note[data-program="0"][data-is-drum="true"] {
-  fill: #EA8D7F;
+  fill: #009e73;
 }
 
 /* Percussive continuation */
 midi-visualizer svg rect.note[data-program="1"][data-is-drum="true"] {
-  fill: #F1C09A;
+  fill: #d55e00;
 }
 
 midi-visualizer svg rect.note.active {
@@ -227,11 +227,11 @@ midi-visualizer svg rect.note.active {
 }
 
 #percussive-prompt {
-  background-color: #EA8D7F;
+  background-color: #009e73;
 }
 
 #percussive-cont {
-  background-color: #F1C09A;
+  background-color: #d55e00;
 }
 
 .legend {
