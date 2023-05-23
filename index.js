@@ -2,7 +2,7 @@
 
   const SAMPLES_ROOT = 'https://dblblnd.github.io/neurips23/samples';
   // Controls horizontal width (default 30)
-  const PIXELS_PER_TIME_STEP = 38;
+  const PIXELS_PER_TIME_STEP = 49;
   // Controls vertical width
   const NOTE_HEIGHT = 3;
 

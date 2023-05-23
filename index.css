@@ -50,7 +50,7 @@ body {
   padding: 0 2rem;
 } */
 main {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
@@ -190,7 +190,7 @@ midi-visualizer svg rect.note.active {
 }
 
 .site-footer {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 1.5rem 0;
   text-align: center;
