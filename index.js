@@ -23,6 +23,7 @@
     const midiSrc = `${SAMPLES_ROOT}/${exampleTag}.vis.mid`;
     const audioSrc = `${SAMPLES_ROOT}/${exampleTag}.mp3`;
     midiVisualizer.setAttribute('src', midiSrc);
+    midiVisualizer.querySelector('div').scrollLeft = 0
     midiPlayer.setAttribute('src', midiSrc);
     audioPlayer.pause();
     audioSource.setAttribute('src', audioSrc);
