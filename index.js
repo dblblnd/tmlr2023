@@ -6,6 +6,19 @@
   // Controls vertical width
   const NOTE_HEIGHT = 3;
 
+  const EXAMPLE_TITLES = {
+    "demo-example-0": "Ave Maria",
+  }
+
+  function getExampleTitle(playerId, idx) {
+    const key = `${playerId}-${idx}`;
+    let title = '';
+    if (key in EXAMPLE_TITLES) {
+      title = EXAMPLE_TITLES[key];
+    }
+    return title;
+  }
+
   function updateUrl(anchor, navCurrentIdx) {
     const currentURL = new URL(window.location.href);
     const currentSearchParams = currentURL.searchParams;
@@ -52,6 +65,7 @@
 
     document.querySelectorAll('div.example-tabbed').forEach((divEl, i) => {
       // Get template attributes
+      const playerId = divEl.getAttribute('id');
       const linkEls = divEl.querySelectorAll('a');
       const playerDivEl = divEl.querySelector('div.audio-midi-player');
       const exampleTag = playerDivEl.getAttribute('example');
@@ -69,6 +83,7 @@
       const navCurrent = playerEl.querySelector('.nav-current')
       const navMax = playerEl.querySelector('.nav-max')
       const navNext = playerEl.querySelector('.nav-next')
+      const navTitle = playerEl.querySelector('.nav-title');
 
       // Configure MIDI player
       midiVisualizer.setAttribute('id', `audio-midi-player-${i}`);
@@ -117,17 +132,20 @@
 
       // Configure nav
       let navCurrentIdx = 0;
+      navTitle.innerHTML = getExampleTitle(playerId, navCurrentIdx);
       navMax.innerHTML = maxIdx;
       navPrevious.onclick = function () {
         navCurrentIdx -= 1;
         if (navCurrentIdx < 0) navCurrentIdx += Number(maxIdx);
         navCurrent.innerHTML = navCurrentIdx + 1;
+        navTitle.innerHTML = getExampleTitle(playerId, navCurrentIdx);
         refreshDisplayedMidi(divEl);
       }
       navNext.onclick = function () {
         navCurrentIdx += 1;
         if (navCurrentIdx >= maxIdx) navCurrentIdx -= Number(maxIdx);
         navCurrent.innerHTML = navCurrentIdx + 1;
+        navTitle.innerHTML = getExampleTitle(playerId, navCurrentIdx);
         refreshDisplayedMidi(divEl);
       }
 
@@ -156,3 +174,4 @@
 
   document.addEventListener("DOMContentLoaded", onDomReady, false);
 })();
+
