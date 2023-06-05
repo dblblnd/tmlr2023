@@ -42,8 +42,14 @@ body {
 }
 
 .nav {
+  text-align: center;
   margin: 0 auto;
   width: 150px;
+}
+
+.nav-title-container {
+  text-align: center;
+  margin-top: 1.5em;
 }
 
 /* #inpainted-music, #controll-number-of-bars {
