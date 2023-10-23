@@ -1,6 +1,6 @@
 (function () {
 
-  const SAMPLES_ROOT = 'https://dblblnd.github.io/neurips23/samples';
+  const SAMPLES_ROOT = 'https://dblblnd.github.io/tmlr2023/samples';
   // Controls horizontal width (default 30)
   const PIXELS_PER_TIME_STEP = 49;
   // Controls vertical width
